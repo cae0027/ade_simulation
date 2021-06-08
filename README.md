@@ -1,1 +1,1 @@
-# ade_simulation
+# Repository for Simulation of 1D Advection Diffusion Equations
