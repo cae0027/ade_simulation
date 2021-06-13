@@ -1,5 +1,46 @@
-
 import numpy as np
+
+# Exact solution
+ue = lambda x,t: np.sin(x) * np.exp(-2*t)
+# ue = lambda x,t: np.sin(x)*(2*t-5)
+
+# Diffusion, Convection Coefficients
+mu = 8
+gamma = 3
+
+# Forcing term
+f = lambda x,t: (mu-2)*np.sin(x)*np.exp(-2*t) + gamma * np.cos(x)*np.exp(-2*t)
+# f = lambda x,t: (2+mu*(2*t-5))*np.sin(x) + gamma*(2*t-5)*np.cos(x)
+
+# Boundary points
+a = -1
+b = 20
+
+# Boundary conditions
+u_a = lambda a,t: np.sin(a)*np.exp(-2*t)         # Dirichlet boundary u(a,t)
+# u_a = lambda t: np.sin(a)*(2*t-5)
+# u_xb = lambda b, t: np.cos(b)*np.exp(-2*t)     # Neumann boundary u_x(b,t)
+u_b = lambda b,t: np.sin(b)*np.exp(-2*t)         # Dirichlet boundary u(b,t)
+# u_b = lambda t: np.sin(b)*(2*t-5)
+ut = lambda x: np.sin(x)                         # Initial condition
+# ut = lambda x: -5*np.sin(x)
+u_x = lambda x,t: -5*np.cos(x)*np.exp(-2*t)
+# u_x = lambda x,t: -5*np.cos(x)*(2*t-5)
+
+# Time interval
+t0 = 0
+T = 50
+
+
+# Time points
+n_t  = 200
+
+# Time step
+dt = (T-t0)/n_t
+
+ts = np.linspace(t0,T,n_t+1)
+
+# import numpy as np
 from oned_fem_simulation import oned_mesh, oned_gauss,oned_shape 
 from oned_fem_simulation import oned_bilinear, oned_linear
 import scipy
