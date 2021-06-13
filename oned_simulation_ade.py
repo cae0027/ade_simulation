@@ -1,5 +1,5 @@
 
-# import numpy as np
+import numpy as np
 from oned_fem_simulation import oned_mesh, oned_gauss,oned_shape 
 from oned_fem_simulation import oned_bilinear, oned_linear
 import scipy
